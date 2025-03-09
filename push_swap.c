@@ -1,5 +1,5 @@
 #include "push_swap.h"
-
+/*
 int	valid_orno(char *str)
 {
 	int		i;
@@ -54,4 +54,27 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	// printf("%s\n", join);
+}*/
+int main()
+{
+	struct s_node *head;
+
+	head = malloc(sizeof(struct s_node));
+	head->nbr = 2003;
+	head->next = malloc(sizeof(struct s_node));
+	head->next->nbr = 12;
+	head->next->next = malloc(sizeof(struct s_node));
+	head->next->next->nbr = 12;
+	head->next->next->next = malloc(sizeof(struct s_node));
+	head->next->next->next->nbr = 21;
+	head->next->next->next->next = NULL;
+	
+	struct s_node *tmp;
+
+	tmp = head;
+	while (tmp)
+	{
+		printf("%d\n", tmp->nbr);
+		tmp = tmp->next;
+	}
 }
