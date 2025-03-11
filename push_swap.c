@@ -1,5 +1,27 @@
 #include "push_swap.h"
-/*
+
+void add_last(t_node **head, int nbr)
+{
+	t_node *new_node;
+	t_node *tmp;
+
+	tmp = *head;
+	new_node = malloc(sizeof(t_node));
+	new_node->next = NULL;
+	new_node->nbr = nbr;
+
+	if (*head == NULL)
+	{
+		*head= new_node;
+		return;
+	}
+	while (tmp->next != NULL)
+	{
+		tmp = tmp->next;
+	}
+	tmp->next = new_node;
+
+}
 int	valid_orno(char *str)
 {
 	int		i;
@@ -28,11 +50,13 @@ int	valid_orno(char *str)
 
 int	main(int argc, char *argv[])
 {
+	t_node *head_a;
 	int i;
 	char *join;
 	char **split;
 
 	i = 1;
+	head_a = NULL;
 	join = NULL;
 	if (argc == 1)
 		return (0);
@@ -54,7 +78,19 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	// printf("%s\n", join);
-}*/
+	i = 0;
+	while(split[i])
+	{
+		add_last(&head_a, ft_atoi(split[i]));
+		i++;
+	}
+	while (head_a)
+	{
+		printf("%d\n", head_a->nbr);
+		 head_a = head_a->next;
+	}
+}
+/*
 int main()
 {
 	struct s_node *head;
@@ -77,4 +113,4 @@ int main()
 		printf("%d\n", tmp->nbr);
 		tmp = tmp->next;
 	}
-}
+}*/

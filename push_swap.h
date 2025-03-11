@@ -6,11 +6,11 @@
 # include <unistd.h>
 
 
-struct	s_node
+typedef struct s_node
 {
     int nbr;
     struct s_node *next;
-};
+}t_node;
 
 char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split(char *s, char c);
