@@ -48,15 +48,26 @@ int	valid_orno(char *str)
 	return (1);
 }
 
+void print_list(t_node *head)
+{
+    while (head != NULL)
+    {
+        printf("%d\n", head->nbr);
+        head = head->next;
+    }
+}
+
 int	main(int argc, char *argv[])
 {
 	t_node *head_a;
+	t_node *head_b;
 	int i;
 	char *join;
 	char **split;
 
 	i = 1;
 	head_a = NULL;
+	head_b = NULL;
 	join = NULL;
 	if (argc == 1)
 		return (0);
@@ -84,11 +95,12 @@ int	main(int argc, char *argv[])
 		add_last(&head_a, ft_atoi(split[i]));
 		i++;
 	}
-	while (head_a)
-	{
-		printf("%d\n", head_a->nbr);
-		 head_a = head_a->next;
-	}
+	sa(head_a);
+	sb(head_b);
+	ra(head_a);
+	rb(head_b);
+	rr(head_a, head_b);
+	print_list(head_a, head_b);
 }
 /*
 int main()
