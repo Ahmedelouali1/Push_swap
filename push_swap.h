@@ -29,5 +29,7 @@ void rr(t_node **head_a, t_node **head_b);
 void rra(t_node **head_a);
 void rrb(t_node **head_b);
 void rrr(t_node **head_a, t_node **head_b);
+void sort_two(t_node *head);
+void sort_three(t_node *head_a,t_node *head_b);
 
 #endif

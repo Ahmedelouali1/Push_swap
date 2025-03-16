@@ -1,17 +1,24 @@
 NAME = push_swap
 CC = gcc
-RM = -rf
 CFLAGS = -Wall -Wextra -Werror
 SRC = push_swap.c pa.c pb.c ra.c rb.c rr.c rra.c rrb.c sa.c sb.c ss.c utils.c
 INCLUDE = push_swap.h
 
-OBJS = ${SRCS : .c= .o}
+OBJS = ${SRC:.c=.o}
 
 all : ${NAME}
 
-clean :git 
+${NAME} : ${OBJS}
+	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
 
-fclean : 
+%.o : %.c ${INCLUDE}
+	${CC} ${CFLAGS} -o $@ -c $<
+
+clean : 
+	rm -rf $(OBJS)
+
+fclean : clean
+	rm -rf $(NAME)
 
 re : fclean all
 

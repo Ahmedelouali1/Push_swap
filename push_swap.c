@@ -95,12 +95,15 @@ int	main(int argc, char *argv[])
 		add_last(&head_a, ft_atoi(split[i]));
 		i++;
 	}
-	sa(head_a);
-	sb(head_b);
-	ra(head_a);
-	rb(head_b);
-	rr(head_a, head_b);
-	print_list(head_a, head_b);
+	if (argc == 3)
+	{
+		sort_two(head_a);
+	}
+	if (argc == 4)
+		sort_three(head_a, head_b);
+	print_list(head_a);
+	printf("and this is the stack B\n");
+	print_list(head_b);
 }
 /*
 int main()
