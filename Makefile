@@ -1,7 +1,7 @@
 NAME = push_swap
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-SRC = push_swap.c pa.c pb.c ra.c rb.c rr.c rra.c rrb.c sa.c sb.c ss.c utils.c
+CFLAGS = -Wall -Wextra -Werror 
+SRC = push_swap.c moves_a.c moves_b.c moves_a_b.c big_sort.c utils.c algorithm.c ysf.c
 INCLUDE = push_swap.h
 
 OBJS = ${SRC:.c=.o}

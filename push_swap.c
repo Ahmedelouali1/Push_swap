@@ -52,9 +52,35 @@ void print_list(t_node *head)
 {
     while (head != NULL)
     {
-        printf("%d\n", head->nbr);
+        printf("nbr :%d	 index :%d\n", head->nbr, head->index);
         head = head->next;
     }
+}
+int list_indexing(t_node *head)
+{
+	t_node *dup;
+	t_node *tmp;
+
+	tmp = head;
+	dup = head;
+	while (head)
+	{
+		dup = tmp;
+		head->index = 1;
+		while (dup)
+		{
+			if (head != dup)
+			{
+				if (dup->nbr < head->nbr)
+					head->index += 1;
+				if (dup->nbr == head->nbr)
+					return (1);
+			}
+			dup = dup->next;
+		}
+		head = head->next;
+	}
+	return(0);
 }
 
 int	main(int argc, char *argv[])
@@ -95,15 +121,26 @@ int	main(int argc, char *argv[])
 		add_last(&head_a, ft_atoi(split[i]));
 		i++;
 	}
-	if (argc == 3)
+	if (list_indexing(head_a) == 1)
 	{
-		sort_two(head_a);
+			write(2, "Error\n", 6);
+		return (0);
 	}
-	if (argc == 4)
-		sort_three(head_a, head_b);
-	print_list(head_a);
-	printf("and this is the stack B\n");
-	print_list(head_b);
+	if (is_sorted(head_a) == 1)
+		return (0);
+	int size;
+	size = count_list(head_a);
+	if (size == 2)
+		sort_two(head_a);
+	if (size == 3)
+		sort_three(&head_a);
+	if (size == 4)
+		sort_four(&head_a, &head_b);
+	if (size == 5)
+		sort_five(&head_a, &head_b);
+	if (size > 5)
+		big_sort(&head_a, &head_b);
+
 }
 /*
 int main()
