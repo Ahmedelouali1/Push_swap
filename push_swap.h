@@ -46,5 +46,9 @@ void get_totop_b(t_node **head, int position);
 void push_chunk(t_node **head_a, t_node **head_b, int chunk_size, int step);
 void get_totop_b(t_node **head, int position);
 int biggest_nbr(t_node *head);
+void sort(t_node **head_a, t_node **head_b);
+char **delete (char **alloc);
+int check_args(char **split);
+void free_list(t_node *head_a);
 
 #endif

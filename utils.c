@@ -71,7 +71,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s1 && s2)
 		return (ft_strdup(s2));
 	if (s1 && !s2)
+	{
+		free(s1);
 		return (ft_strdup(s1));
+	}
 	frst = ft_strlen(s1);
 	scnd = ft_strlen(s2);
 	new = (char *)malloc((frst + scnd + 1) * sizeof(char));
@@ -80,6 +83,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	ft_memcpy(new, s1, frst);
 	ft_memcpy(new + frst, s2, scnd);
 	new[frst + scnd] = '\0';
+	free(s1);
 	return (new);
 }
 
