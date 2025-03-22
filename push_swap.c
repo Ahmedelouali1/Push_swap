@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahmel-ou <ahmel-ou@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/22 06:27:47 by ahmel-ou          #+#    #+#             */
+/*   Updated: 2025/03/22 17:14:48 by ahmel-ou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int add_last(t_node **head, int nbr)
+int	add_last(t_node **head, int nbr)
 {
-	t_node *new_node;
-	t_node *tmp;
+	t_node	*new_node;
+	t_node	*tmp;
 
 	tmp = *head;
 	new_node = malloc(sizeof(t_node));
@@ -13,7 +25,7 @@ int add_last(t_node **head, int nbr)
 	new_node->nbr = nbr;
 	if (*head == NULL)
 	{
-		*head= new_node;
+		*head = new_node;
 		return (1);
 	}
 	while (tmp->next != NULL)
@@ -23,36 +35,11 @@ int add_last(t_node **head, int nbr)
 	tmp->next = new_node;
 	return (1);
 }
-int	valid_orno(char *str)
-{
-	int		i;
-	long	nb;
 
-	i = 0;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		i++;
-		if (str[i] == '\0')
-			return (0);
-	}
-	while (str[i])
-	{
-		if (!(str[i] >= '0' && str[i] <= '9'))
-			return (0);
-		i++;
-	}
-	if (i > 12)
-		return (0);
-	nb = ft_atoi(str);
-	if (nb < -2147483648 || nb > 2147483647)
-		return (0);
-	return (1);
-}
-
-int list_indexing(t_node *head)
+int	list_indexing(t_node *head)
 {
-	t_node *dup;
-	t_node *tmp;
+	t_node	*dup;
+	t_node	*tmp;
 
 	tmp = head;
 	dup = head;
@@ -73,11 +60,12 @@ int list_indexing(t_node *head)
 		}
 		head = head->next;
 	}
-	return(0);
+	return (0);
 }
-int check_args(char **split)
+
+int	check_args(char **split)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (split[i])
@@ -85,7 +73,7 @@ int check_args(char **split)
 		if (valid_orno(split[i]) == 0)
 		{
 			write(2, "Error\n", 6);
-			delete(split);
+			delete (split);
 			return (0);
 		}
 		i++;
@@ -93,36 +81,9 @@ int check_args(char **split)
 	return (1);
 }
 
-int make_list(t_node **head_a, char *join, int i)
+void	free_list(t_node *head_a)
 {
-	char **split;
-
-	split = ft_split(join, ' ');
-	free(join);
-	if (!split)
-		return (0);
-	if(check_args(split) == 0)
-		return(0);
-	while(split[i])
-	{
-		if (add_last(head_a, ft_atoi(split[i++])) == 0)
-		{
-			delete(split);
-			return(0);
-		}
-	}
-	delete(split);
-	if (list_indexing(*head_a) == 1)
-	{
-		write(2, "Error\n", 6);
-		free_list(*head_a);
-		return (0);
-	}
-	return (1);
-}
-void free_list(t_node *head_a)
-{
-	t_node *tmp;
+	t_node	*tmp;
 
 	while (head_a)
 	{
@@ -132,31 +93,12 @@ void free_list(t_node *head_a)
 	}
 }
 
-void sort(t_node **head_a, t_node **head_b)
-{
-	int size;
-
-	size = count_list(*head_a);
-	if (size == 2)
-		sort_two(*head_a);
-	if (size == 3)
-		sort_three(head_a);
-	if (size == 4)
-		sort_four(head_a, head_b);
-	if (size == 5)
-		sort_five(head_a, head_b);
-	if (size > 5)
-		big_sort(head_a, head_b);
-	free_list(*head_a);
-	
-}
-
 int	main(int argc, char *argv[])
 {
-	t_node *head_a;
-	t_node *head_b;
-	int i;
-	char *join;
+	t_node	*head_a;
+	t_node	*head_b;
+	int		i;
+	char	*join;
 
 	i = 1;
 	head_a = NULL;
@@ -173,7 +115,7 @@ int	main(int argc, char *argv[])
 		if (!join)
 			return (0);
 	}
-	if (make_list(&head_a,join, 0) == 0)
+	if (make_list(&head_a, join, 0) == 0)
 		return (0);
 	if (is_sorted(head_a) == 1)
 		return (0);
