@@ -6,7 +6,7 @@
 /*   By: ahmel-ou <ahmel-ou@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 06:27:47 by ahmel-ou          #+#    #+#             */
-/*   Updated: 2025/03/22 17:14:48 by ahmel-ou         ###   ########.fr       */
+/*   Updated: 2025/03/24 05:50:24 by ahmel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ int	main(int argc, char *argv[])
 		return (0);
 	while (argv[i])
 	{
+		if (argv[i][0] == '\0')
+			return (ft_error(join));
 		join = ft_strjoin(join, argv[i++]);
 		if (!join)
 			return (0);
@@ -115,9 +117,5 @@ int	main(int argc, char *argv[])
 		if (!join)
 			return (0);
 	}
-	if (make_list(&head_a, join, 0) == 0)
-		return (0);
-	if (is_sorted(head_a) == 1)
-		return (0);
-	sort(&head_a, &head_b);
+	start_sort(&head_a, &head_b, join);
 }

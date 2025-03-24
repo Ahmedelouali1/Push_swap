@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid.c                                      :+:      :+:    :+:   */
+/*   ft_norm.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahmel-ou <ahmel-ou@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/22 06:27:30 by ahmel-ou          #+#    #+#             */
-/*   Updated: 2025/03/24 05:31:49 by ahmel-ou         ###   ########.fr       */
+/*   Created: 2025/03/24 05:52:09 by ahmel-ou          #+#    #+#             */
+/*   Updated: 2025/03/24 05:58:58 by ahmel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	valid_orno(char *str)
+int	ft_error(char *join)
 {
-	int		i;
-	long	nb;
+	write(2, "Error\n", 6);
+	free(join);
+	return (0);
+}
 
-	i = 0;
-	if (str[i] == '\0')
+int	start_sort(t_node **head_a, t_node **head_b, char *join)
+{
+	if (make_list(head_a, join, 0) == 0)
 		return (0);
-	if (str[i] == '+' || str[i] == '-')
-	{
-		i++;
-		if (str[i] == '\0')
-			return (0);
-	}
-	while (str[i])
-	{
-		if (!(str[i] >= '0' && str[i] <= '9'))
-			return (0);
-		i++;
-	}
-	if (i > 12)
+	if (is_sorted(*head_a) == 1)
 		return (0);
-	nb = ft_atoi(str);
-	if (nb < -2147483648 || nb > 2147483647)
-		return (0);
+	sort(head_a, head_b);
 	return (1);
 }
