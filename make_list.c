@@ -6,7 +6,7 @@
 /*   By: ahmel-ou <ahmel-ou@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 06:27:35 by ahmel-ou          #+#    #+#             */
-/*   Updated: 2025/03/22 17:05:53 by ahmel-ou         ###   ########.fr       */
+/*   Updated: 2025/03/29 06:47:20 by ahmel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	make_list(t_node **head_a, char *join, int i)
 	{
 		if (add_last(head_a, ft_atoi(split[i++])) == 0)
 		{
-			delete (split);
+			free_list(*head_a);
+			delete(split);
 			return (0);
 		}
 	}
