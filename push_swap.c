@@ -6,7 +6,7 @@
 /*   By: ahmel-ou <ahmel-ou@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 06:27:47 by ahmel-ou          #+#    #+#             */
-/*   Updated: 2025/03/24 05:50:24 by ahmel-ou         ###   ########.fr       */
+/*   Updated: 2025/03/29 17:18:27 by ahmel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ int	main(int argc, char *argv[])
 	join = NULL;
 	if (argc == 1)
 		return (0);
+	if (is_only_space(argv[1]))
+		return (write_error(), 0);
 	while (argv[i])
 	{
 		if (argv[i][0] == '\0')

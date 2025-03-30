@@ -6,7 +6,7 @@
 /*   By: ahmel-ou <ahmel-ou@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 16:39:13 by ahmel-ou          #+#    #+#             */
-/*   Updated: 2025/03/24 05:58:51 by ahmel-ou         ###   ########.fr       */
+/*   Updated: 2025/03/29 17:19:03 by ahmel-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,7 @@ int					make_list(t_node **head_a, char *join, int i);
 int					add_last(t_node **head, int nbr);
 int					ft_error(char *join);
 int					start_sort(t_node **head_a, t_node **head_b, char *join);
+int					is_only_space(char *s);
+void				write_error(void);
 
 #endif
